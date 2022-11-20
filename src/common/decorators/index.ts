@@ -22,4 +22,24 @@ export const Post = (endpoint: string) => {
   };
 };
 
+export const Delete = (endpoint: string) => {
+  return function (
+    target: any,
+    propertyKey: string,
+    descriptor: PropertyDescriptor
+  ) {
+    router.delete(endpoint, descriptor.value.bind(target));
+  };
+};
+
+export const Patch = (endpoint: string) => {
+  return function (
+    target: any,
+    propertyKey: string,
+    descriptor: PropertyDescriptor
+  ) {
+    router.patch(endpoint, descriptor.value.bind(target));
+  };
+};
+
 export { router };
